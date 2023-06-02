@@ -20,6 +20,7 @@ public class Main {
         for(Character ch : text.toCharArray()){
             encodedText.append(encodedValues.get(ch));
         }
+        System.out.println("Encoded values: " + encodedValues);
         System.out.println("Encoded text: " + encodedText);
         System.out.println("Decoded text: " + HuffmanCoding.decode(root, String.valueOf(encodedText)));
 
