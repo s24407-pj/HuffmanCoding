@@ -5,14 +5,19 @@ import java.util.Map;
 import java.util.PriorityQueue;
 
 public class HuffmanCoding {
-    //
+
     public static void encodeText(Node node, String prefix, HashMap<Character, String> encodedValues) {
+        // If the node is null, return
         if (node == null) {
             return;
         }
+
+        // If the node is a leaf, store its character and prefix in the encodedValues map
         if (node.isLeaf()) {
             encodedValues.put(node.getCharacter(), prefix);
         } else {
+            // If the node is not a leaf node, recursively call encodeText for its left and right children
+            // Append "0" to the prefix when traversing the left child, and "1" when traversing the right child
             encodeText(node.left, prefix + "0", encodedValues);
             encodeText(node.right, prefix + "1", encodedValues);
         }
