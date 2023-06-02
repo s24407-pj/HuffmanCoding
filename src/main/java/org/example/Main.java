@@ -8,10 +8,20 @@ public class Main {
 
         // Input text that consist of a-z
         System.out.print("Enter text to compress and press ENTER to confirm: ");
-        String text = scanner.nextLine().replaceAll("[^A-za-z]", "");
+        String text = scanner.nextLine();
+
+        // Encode provided text
+        HashMap<Character,String> encodedValues = new HashMap<>();
+        Node root = HuffmanCoding.createTree(text);
+        HuffmanCoding.encodeText(root,"",encodedValues);
 
         //
-
+        StringBuilder encodedText = new StringBuilder();
+        for(Character ch : text.toCharArray()){
+            encodedText.append(encodedValues.get(ch));
+        }
+        System.out.println("Encoded text: " + encodedText);
+        System.out.println("Decoded text: " + HuffmanCoding.decode(root, String.valueOf(encodedText)));
 
     }
 }
